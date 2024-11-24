@@ -1,11 +1,13 @@
 using Content.Server.Chemistry.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
+using Content.Shared.Access.Systems; // DeltaV
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Dispenser;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.FixedPoint;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Popups; // DeltaV
 using JetBrains.Annotations;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
@@ -30,6 +32,8 @@ namespace Content.Server.Chemistry.EntitySystems
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly OpenableSystem _openable = default!;
+        [Dependency] private readonly AccessReaderSystem _access = default!; // DeltaV
+        [Dependency] private readonly SharedPopupSystem _popup = default!;
 
         public override void Initialize()
         {
@@ -115,6 +119,14 @@ namespace Content.Server.Chemistry.EntitySystems
 
         private void OnSetDispenseAmountMessage(Entity<ReagentDispenserComponent> reagentDispenser, ref ReagentDispenserSetDispenseAmountMessage message)
         {
+            // Begin DeltaV Code: Smart fridge requires access
+            if (!_access.IsAllowed(message.Actor, reagentDispenser))
+            {
+                _popup.PopupEntity(Loc.GetString("reagent-dispenser-access-denied"), message.Actor, reagentDispenser);
+                return;
+            }
+            // End DeltaV Code
+
             reagentDispenser.Comp.DispenseAmount = message.ReagentDispenserDispenseAmount;
             UpdateUiState(reagentDispenser);
             ClickSound(reagentDispenser);
@@ -126,6 +138,14 @@ namespace Content.Server.Chemistry.EntitySystems
             var storedContainer = _itemSlotsSystem.GetItemOrNull(reagentDispenser, message.SlotId);
             if (storedContainer == null)
                 return;
+
+            // Begin DeltaV Code: Smart fridge requires access
+            if (!_access.IsAllowed(message.Actor, reagentDispenser))
+            {
+                _popup.PopupEntity(Loc.GetString("reagent-dispenser-access-denied"), message.Actor, reagentDispenser);
+                return;
+            }
+            // End DeltaV Code
 
             var outputContainer = _itemSlotsSystem.GetItemOrNull(reagentDispenser, SharedReagentDispenser.OutputSlotName);
             if (outputContainer is not { Valid: true } || !_solutionContainerSystem.TryGetFitsInDispenser(outputContainer.Value, out var solution, out _))
@@ -148,6 +168,14 @@ namespace Content.Server.Chemistry.EntitySystems
 
         private void OnClearContainerSolutionMessage(Entity<ReagentDispenserComponent> reagentDispenser, ref ReagentDispenserClearContainerSolutionMessage message)
         {
+            // Begin DeltaV Code: Smart fridge requires access
+            if (!_access.IsAllowed(message.Actor, reagentDispenser))
+            {
+                _popup.PopupEntity(Loc.GetString("reagent-dispenser-access-denied"), message.Actor, reagentDispenser);
+                return;
+            }
+            // End DeltaV Code
+
             var outputContainer = _itemSlotsSystem.GetItemOrNull(reagentDispenser, SharedReagentDispenser.OutputSlotName);
             if (outputContainer is not { Valid: true } || !_solutionContainerSystem.TryGetFitsInDispenser(outputContainer.Value, out var solution, out _))
                 return;
