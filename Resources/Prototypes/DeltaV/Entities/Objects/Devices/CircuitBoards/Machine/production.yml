@@ -1,0 +1,10 @@
+- type: entity
+  parent: ChemDispenserMachineCircuitboard
+  id: SmartFridgeMachineCircuitboard
+  name: smart fridge machine board
+  description: A machine printed circuit board for a smart fridge. Looks like you could use a screwdriver to change the board type.
+  components:
+  - type: MachineBoard
+    prototype: SmartFridgeDeltaV
+  - type: Construction
+    node: smart_fridge

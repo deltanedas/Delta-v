@@ -1,0 +1,18 @@
+- type: constructionGraph
+  id: ChemDispenserBoard
+  start: chem_dispenser
+  graph:
+  - node: chem_dispenser
+    entity: ChemDispenserMachineCircuitBoard
+    edges:
+    - to: smart_fridge
+      steps:
+      - tool: Screwing
+        doAfter: 2
+  - node: smart_fridge
+    entity: SmartFridgeMachineCircuitBoard
+    edges:
+    - to: chem_dispenser
+      steps:
+      - tool: Screwing
+        doAfter: 2

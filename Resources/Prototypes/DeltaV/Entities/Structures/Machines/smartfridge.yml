@@ -1,0 +1,35 @@
+# Completely unlike upstream smart fridge, this just holds chems for docs to dispense
+- type: entity
+  parent: ChemDispenserEmpty
+  id: SmartFridgeDeltaV
+  name: SmartFridge
+  description: A refrigerated storage unit for storing medicines.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/smartfridge.rsi
+    snapCardinals: true
+    layers:
+    - state: smartfridge
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: smartfridge_door
+      map: ["enum.StorageVisualLayers.Door"]
+      shader: unshaded
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#9dc5c9"
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+        density: 200
+  - type: Machine
+    board: SmartFridgeMachineCircuitboard
+  - type: AccessReader
+    access: [[Medical]]
