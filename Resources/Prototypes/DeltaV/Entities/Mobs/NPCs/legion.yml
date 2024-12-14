@@ -1,0 +1,10 @@
+- type: entity
+  parent: BaseMobAsteroid
+  id: MobLegion
+  name: legion
+  description: You can still see what was once a human under the shifting mass of corruption.
+  components:
+  - type: Sprite
+    sprites: DeltaV/Mobs/Lavaland/legion.rsi
+    layers:
+    - map: [
