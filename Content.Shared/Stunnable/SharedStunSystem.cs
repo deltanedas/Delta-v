@@ -1,5 +1,6 @@
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Buckle; // Shitmed Change
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory.Events;
@@ -28,6 +29,7 @@ public abstract class SharedStunSystem : EntitySystem
 {
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly SharedBroadphaseSystem _broadphase = default!;
+    [Dependency] private readonly SharedBuckleSystem _buckle = default!; // Shitmed Change
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -152,7 +154,7 @@ public abstract class SharedStunSystem : EntitySystem
 
         if (TryComp(uid, out LayingDownComponent? layingDown))
         {
-            if (layingDown.AutoGetUp && !_container.IsEntityInContainer(uid))
+            if (layingDown.AutoGetUp && !_container.IsEntityInContainer(uid) && !_buckle.IsBuckled(uid)) // Shitmed Change: add !buckled check
                 _layingDown.TryStandUp(uid, layingDown);
             return;
         }
