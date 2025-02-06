@@ -1,6 +1,7 @@
 using Content.Server.Communications;
 using Content.Server.Chat.Managers;
 using Content.Server.CriminalRecords.Systems;
+using Content.Server.Emp; // DeltaV
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Objectives.Components;
 using Content.Server.Objectives.Systems;
@@ -43,6 +44,7 @@ public sealed class SpaceNinjaSystem : SharedSpaceNinjaSystem
         SubscribeLocalEvent<SpaceNinjaComponent, ResearchStolenEvent>(OnResearchStolen);
         SubscribeLocalEvent<SpaceNinjaComponent, ThreatCalledInEvent>(OnThreatCalledIn);
         SubscribeLocalEvent<SpaceNinjaComponent, CriminalRecordsHackedEvent>(OnCriminalRecordsHacked);
+        SubscribeLocalEvent<SpaceNinjaComponent, EmpAttemptEvent>(OnEmpAttempt); // DeltaV
     }
 
     public override void Update(float frameTime)
@@ -153,6 +155,15 @@ public sealed class SpaceNinjaSystem : SharedSpaceNinjaSystem
     private void OnCriminalRecordsHacked(Entity<SpaceNinjaComponent> ent, ref CriminalRecordsHackedEvent args)
     {
         _codeCondition.SetCompleted(ent.Owner, ent.Comp.MassArrestObjective);
+    }
+
+    /// <summary>
+    /// DeltaV: Keep IPC ninjas safe from their EMPs.
+    /// </summary>
+    private void OnEmpAttempt(Entity<SpaceNinjaComponent> ent, ref EmpAttemptEvent args)
+    {
+        if (ent.Comp.Suit != null)
+            args.Cancel();
     }
 
     /// <summary>
