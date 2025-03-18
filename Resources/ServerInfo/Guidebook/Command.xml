@@ -3,20 +3,27 @@
 The heads of each department come together to form the [color=#1b67a5]Command[/color] department, a force to be reckoned with and the handlers of the station. They usually have access to special equipment and their own rooms. They are often wanted dead.
 
 ## Personnel
-[color=#1b67a5]Command[/color] is made up of the heads of each department, being the [color=#9fed58]Head of Personnel[/color], the [color=#cb0000]Head of Security[/color], the [color=#5b97bc]Chief Medical Officer[/color], the [color=#f39f27]Chief Engineer[/color], the [color=#c96dbf]Research Director[/color], the [color=#b18644]Quartermaster[/color] and above all else, the [color=#1b67a5]Captain[/color].
+<!-- DeltaV: add CJ, reword mysta and lo -->
+[color=#1b67a5]Command[/color] is made up of the heads of each department, being the [color=#9fed58]Head of Personnel[/color], the [color=#cb0000]Head of Security[/color], the [color=#5b97bc]Chief Medical Officer[/color], the [color=#f39f27]Chief Engineer[/color], the [color=#c96dbf]Mystagogue[/color], the [color=#b18644]Logistics Officer[/color], the [color=#701442]Chief Justice[/color] and above all else, the [color=#1b67a5]Captain[/color].
   <Box>
     <GuideEntityEmbed Entity="ToyFigurineCaptain" Caption="Captain"/>
   </Box>
   <Box>
+    <GuideEntityEmbed Entity="ToyFigurineAdminAssistant" Caption="AA"/> <!-- DeltaV -->
     <GuideEntityEmbed Entity="ToyFigurineHeadOfPersonnel" Caption="HoP"/>
     <GuideEntityEmbed Entity="ToyFigurineHeadOfSecurity" Caption="HoS"/>
     <GuideEntityEmbed Entity="ToyFigurineChiefMedicalOfficer" Caption="CMO"/>
   </Box>
   <Box>
     <GuideEntityEmbed Entity="ToyFigurineChiefEngineer" Caption="CE"/>
-    <GuideEntityEmbed Entity="ToyFigurineResearchDirector" Caption="RD"/>
-    <GuideEntityEmbed Entity="ToyFigurineQuartermaster" Caption="QM"/>
+    <GuideEntityEmbed Entity="ToyFigurineResearchDirector" Caption="MG"/> <!-- DeltaV -->
+    <GuideEntityEmbed Entity="ToyFigurineQuartermaster" Caption="LO"/> <!-- DeltaV -->
+    <GuideEntityEmbed Entity="ToyFigurineChiefJustice" Caption="CJ"/> <!-- DeltaV -->
   </Box>
+
+<!-- Begin DeltaV Additions -->
+The [color=#1b67a5]Administrative Assistant[/color] does not lead a department, instead helping out command with whatever they need. And fetching coffee.
+<!-- End DeltaV Additions -->
 
 ## Taking Charge
 Congratulations on your promotion! Besides all the extra paperwork, your new [color=#a4885c]responsibilities[/color] include running your department, making changes and choosing priorities, keeping personnel and equipment safe as well as slacking off while your cronies do all the work.
