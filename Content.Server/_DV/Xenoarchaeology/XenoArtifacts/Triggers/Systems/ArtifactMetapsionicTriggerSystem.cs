@@ -1,5 +1,5 @@
-﻿using Content.Server._DV.Xenoarchaeology.XenoArtifacts.Triggers.Components;
-﻿using Content.Server.Nyanotrasen.StationEvents.Events;
+using Content.Server._DV.Xenoarchaeology.XenoArtifacts.Triggers.Components;
+using Content.Server.Nyanotrasen.StationEvents.Events;
 using Content.Server.Xenoarchaeology.XenoArtifacts.Triggers.Systems;
 using Content.Shared.Abilities.Psionics;
 
