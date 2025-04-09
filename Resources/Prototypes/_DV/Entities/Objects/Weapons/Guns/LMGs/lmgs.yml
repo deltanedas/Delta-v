@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   name: Experimental L6 SAW
   parent: BaseItem
   id: WeaponLightMachineGunL6Borg
