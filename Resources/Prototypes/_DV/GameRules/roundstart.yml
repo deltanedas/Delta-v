@@ -1,0 +1,29 @@
+- type: entity
+  parent: [BaseRoboNeuroticistRule, BaseGameRule]
+  id: RoboNeuroticistRoundstart
+  components:
+  - type: AntagSelection
+    definitions:
+    - prefRoles: [ RoboNeuroticist ] # so people can be picked for it
+      spawnerPrototype: SpawnPointGhostRoboNeuroticist
+      min: 1
+      max: 1
+      pickPlayer: true # the only difference from the event definition...
+      startingGear: RoboNeuroticistGear
+      roleLoadout:
+      - RoleSurvivalStandard
+      components:
+      - type: RandomMetadata
+        nameSegments:
+        - NamesHologram
+        - NamesMilitaryLast
+        nameFormat: name-format-standard
+      - type: EmitSoundOnSpawn # evil sound
+        sound: /Audio/Ambience/Antag/emagged_borg.ogg
+      - type: RandomHumanoidAppearance
+        randomizeName: false
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      mindRoles:
+      - MindRoleRoboNeuroticist

@@ -3,6 +3,7 @@
   name: roles-antag-roboneuroticist-name
   objective: roles-antag-roboneuroticist-objective
   antagonist: true # making evil borgs
+  setPreference: true # small chance of roundstart robo neuroticist
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 172800 # 48h evil big antag lots of playtime
