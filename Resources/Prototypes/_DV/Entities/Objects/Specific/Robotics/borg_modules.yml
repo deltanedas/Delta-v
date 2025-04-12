@@ -6,8 +6,6 @@
   - type: Tag
     tags:
     - BorgModuleSecurity
-  - type: Sprite
-    sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
 
 # Security Modules
 
@@ -19,7 +17,9 @@
   - type: Sprite
     layers:
     - state: security
+      sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
     - state: icon-patrol
+      sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
   - type: ItemBorgModule
     moduleId: Patrol
     items:
@@ -35,7 +35,9 @@
   - type: Sprite
     layers:
     - state: security
+      sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
     - state: icon-hold
+      sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
   - type: ItemBorgModule
     moduleId: Bastion
     items:
@@ -51,7 +53,9 @@
   - type: Sprite
     layers:
     - state: security
+      sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
     - state: icon-detain
+      sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
   - type: ItemBorgModule
     moduleId: Deescalate
     items:
@@ -80,7 +84,9 @@
   - type: Sprite
     layers:
     - state: security
+      sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
     - state: icon-hurt
+      sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
   - type: ItemBorgModule
     moduleId: Escalate
     items:
@@ -97,7 +103,9 @@
   - type: Sprite
     layers:
     - state: security
+      sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
     - state: icon-chase
+      sprite: _DV/Objects/Specific/Robotics/borgmodule.rsi
   - type: ItemBorgModule
     moduleId: Chase
     items:
