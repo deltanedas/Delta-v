@@ -1,0 +1,20 @@
+- type: gamePreset
+  id: RoboNeuroticist
+  alias:
+  - srn
+  - shadow
+  - shadowfactory
+  - evilborgs
+  name: shadow-factory-title
+  description: shadow-factory-description
+  showInVote: false
+  cooldown: 2 # Can't occur thrice
+  rules:
+  - RoboNeuroticistRoundstart
+  - DummyNonAntagChance
+  - SubGamemodesRule
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+  - GlimmerEventScheduler
